@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: taskflow-backend
+  profiles:
+    active: ${SPRING_PROFILE_ACTIVE:dev}
