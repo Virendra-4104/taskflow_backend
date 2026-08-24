@@ -8,8 +8,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.taskflow.taskflow_backend.dto.request.CreatePersonalTaskRequest;
-import com.taskflow.taskflow_backend.dto.request.UpdatePersonalTaskRequest;
+import com.taskflow.taskflow_backend.dto.request.personal_task.CreatePersonalTaskRequest;
+import com.taskflow.taskflow_backend.dto.request.personal_task.UpdatePersonalTaskRequest;
 import com.taskflow.taskflow_backend.dto.response.PersonalTaskResponse;
 import com.taskflow.taskflow_backend.entity.History;
 import com.taskflow.taskflow_backend.entity.Task;
@@ -117,7 +117,7 @@ public class TaskServiceImpl implements TaskService {
                     if(newDueDate.isBefore(LocalDate.now())){
                         throw new RuntimeException("Date must not be in past.");
                     }
-                    
+
                     if (!newDueDate.equals(task.getDueDate())) {
                         histories.add(buildHistory(HistoryEntityType.TASK, task.getId(), user,
                                 HistoryAction.DUE_DATE_UPDATED, task.getDueDate().toString(), newDueDate.toString()));

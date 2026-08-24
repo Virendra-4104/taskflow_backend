@@ -3,8 +3,8 @@ package com.taskflow.taskflow_backend.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taskflow.taskflow_backend.dto.request.CreatePersonalTaskRequest;
-import com.taskflow.taskflow_backend.dto.request.UpdatePersonalTaskRequest;
+import com.taskflow.taskflow_backend.dto.request.personal_task.CreatePersonalTaskRequest;
+import com.taskflow.taskflow_backend.dto.request.personal_task.UpdatePersonalTaskRequest;
 import com.taskflow.taskflow_backend.dto.response.PersonalTaskResponse;
 import com.taskflow.taskflow_backend.service.TaskService;
 

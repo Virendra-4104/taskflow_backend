@@ -1,4 +1,4 @@
-package com.taskflow.taskflow_backend.dto.request;
+package com.taskflow.taskflow_backend.dto.request.user_auth;
 
 import com.taskflow.taskflow_backend.enums.Gender;
 

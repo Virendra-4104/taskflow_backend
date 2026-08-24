@@ -1,4 +1,4 @@
-package com.taskflow.taskflow_backend.dto.request;
+package com.taskflow.taskflow_backend.dto.request.personal_task;
 
 import java.time.LocalDate;
 

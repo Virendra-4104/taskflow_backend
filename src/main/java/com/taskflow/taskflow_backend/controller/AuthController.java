@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taskflow.taskflow_backend.dto.request.LoginRequest;
-import com.taskflow.taskflow_backend.dto.request.RegisterRequest;
+import com.taskflow.taskflow_backend.dto.request.user_auth.LoginRequest;
+import com.taskflow.taskflow_backend.dto.request.user_auth.RegisterRequest;
 import com.taskflow.taskflow_backend.dto.response.AuthResponse;
 import com.taskflow.taskflow_backend.service.UserService;
 

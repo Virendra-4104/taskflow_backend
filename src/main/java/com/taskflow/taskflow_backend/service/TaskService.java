@@ -2,8 +2,8 @@ package com.taskflow.taskflow_backend.service;
 
 import java.util.List;
 
-import com.taskflow.taskflow_backend.dto.request.CreatePersonalTaskRequest;
-import com.taskflow.taskflow_backend.dto.request.UpdatePersonalTaskRequest;
+import com.taskflow.taskflow_backend.dto.request.personal_task.CreatePersonalTaskRequest;
+import com.taskflow.taskflow_backend.dto.request.personal_task.UpdatePersonalTaskRequest;
 import com.taskflow.taskflow_backend.dto.response.PersonalTaskResponse;
 
 public interface TaskService {
