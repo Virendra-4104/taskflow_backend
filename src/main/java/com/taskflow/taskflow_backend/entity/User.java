@@ -8,6 +8,7 @@ import java.util.Set;
 import com.taskflow.taskflow_backend.enums.Gender;
 import com.taskflow.taskflow_backend.enums.Role;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -26,14 +27,12 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -97,7 +96,7 @@ public class User {
     private List<ProjectMember> projectMemberships;
 
     // histories
-    @OneToMany(mappedBy = "createdBy",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "createdBy",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<History> histories;
 
     @PrePersist
