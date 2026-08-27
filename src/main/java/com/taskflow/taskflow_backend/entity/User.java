@@ -83,10 +83,6 @@ public class User {
     @OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
     private List<Project> createdProjects;
 
-    // Teams
-    @OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
-    private List<Team> createdTeams;
-
     // comments
     @OneToMany(mappedBy = "createdBy", fetch = FetchType.LAZY)
     private List<Comment> createdComments;
