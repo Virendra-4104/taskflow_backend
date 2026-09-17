@@ -1,12 +1,14 @@
 package com.taskflow.taskflow_backend.entity;
 
 import com.taskflow.taskflow_backend.enums.Gender;
+import com.taskflow.taskflow_backend.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -38,6 +40,12 @@ public class User {
 
     @Column(name = "profile_img_url",length = 255)
     private String profileImgUrl;
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role", nullable = false)
+    private Set<Role> roles;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
