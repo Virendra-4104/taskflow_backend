@@ -9,3 +9,11 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: validate
+
+app:
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET_KEY}
+      expiration: ${jWT_TOKEN_EXPIRATION_TIME}
+    cors:
+      allowed-origins: ${ALLOWED_ORIGINS}

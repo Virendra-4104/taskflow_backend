@@ -9,3 +9,11 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: validate
+
+app:
+  security:
+    jwt:
+      secret-key: 12km2n3xdeugvhs&ehs%jefc$rt#@k4e
+      expiration: 86400000
+    cors:
+      allowed-origins: http://localhost:5173
