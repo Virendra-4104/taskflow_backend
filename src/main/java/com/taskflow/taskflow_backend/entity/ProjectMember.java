@@ -4,7 +4,7 @@ import com.taskflow.taskflow_backend.enums.ProjectRole;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Set;
 
 @Entity
@@ -34,10 +34,10 @@ public class ProjectMember {
     private Set<ProjectRole> roles;
 
     @Column(name = "joined_at",nullable = false,updatable = false)
-    private LocalDateTime joinedAt;
+    private Instant joinedAt;
 
     @PrePersist
     protected void onCreate(){
-        this.joinedAt = LocalDateTime.now();
+        this.joinedAt = Instant.now();
     }
 }

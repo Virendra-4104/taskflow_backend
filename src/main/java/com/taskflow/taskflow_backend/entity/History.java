@@ -5,6 +5,7 @@ import com.taskflow.taskflow_backend.enums.HistoryEntityType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -41,10 +42,10 @@ public class History {
     private User createdBy;
 
     @Column(name = "created_at",nullable = false,updatable = false)
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     @PrePersist
     protected void onCreate(){
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = Instant.now();
     }
 }

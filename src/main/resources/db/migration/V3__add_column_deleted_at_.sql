@@ -1,0 +1,8 @@
+ALTER TABLE users
+    ADD COLUMN deleted_at DATETIME(6) NULL;
+
+ALTER TABLE projects
+    ADD COLUMN deleted_at DATETIME(6) NULL;
+
+ALTER TABLE tasks
+    ADD COLUMN deleted_at DATETIME(6) NULL;

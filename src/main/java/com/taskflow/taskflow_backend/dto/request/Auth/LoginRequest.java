@@ -1,4 +1,4 @@
-package com.taskflow.taskflow_backend.dto.request;
+package com.taskflow.taskflow_backend.dto.request.Auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
