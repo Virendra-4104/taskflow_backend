@@ -13,16 +13,16 @@ import java.util.Optional;
 public interface ProjectMemberRepository extends JpaRepository<ProjectMember, Long> {
     List<ProjectMember> findByProject(Project project);
 
-    Optional<ProjectMember> findByUser(User member);
+    Optional<ProjectMember> findByProjectAndUser(Project project, User user);
 
     boolean existsByProjectAndUser(Project project, User user);
 
     @Query("""
-    SELECT p
-    FROM Project p
-    JOIN ProjectMember pm ON pm.project = p
-    WHERE pm.user = :user
-    AND p.isDeleted = false
-""")
+                SELECT p
+                FROM Project p
+                JOIN ProjectMember pm ON pm.project = p
+                WHERE pm.user = :user
+                AND p.isDeleted = false
+            """)
     List<Project> findAllProjectsByMember(@Param("user") User user);
 }

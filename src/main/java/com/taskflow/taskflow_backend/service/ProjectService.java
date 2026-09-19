@@ -36,7 +36,7 @@ public class ProjectService {
     //    Create project
     @Transactional
     public ProjectResponse createProject(CreateProjectRequest request) {
-        User currentUser = securityUtils.getCurrent();
+        User currentUser = securityUtils.getCurrentUser();
         Project project = Project.builder()
                 .title(request.title())
                 .description(request.description())
@@ -74,7 +74,7 @@ public class ProjectService {
     //    Update project
     @Transactional
     public ProjectResponse updateProject(Long projectId, UpdateProjectRequest request) {
-        User currentUser = securityUtils.getCurrent();
+        User currentUser = securityUtils.getCurrentUser();
         Project project = projectRepository.findByIdAndIsDeletedIsFalse(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project Not found."));
         if (!project.getCreatedBy().getEmail().equals(currentUser.getEmail())) {
@@ -120,7 +120,7 @@ public class ProjectService {
 
     //    Get project by (only for creator and member)
     public ProjectResponse getProject(Long projectId) {
-        User currentUser = securityUtils.getCurrent();
+        User currentUser = securityUtils.getCurrentUser();
         Project project = projectRepository.findByIdAndIsDeletedIsFalse(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found"));
 
@@ -136,7 +136,7 @@ public class ProjectService {
 
     //    Get all project by creator
     public List<ProjectResponse> getAllProjectByCreator() {
-        User currentUser = securityUtils.getCurrent();
+        User currentUser = securityUtils.getCurrentUser();
         return projectRepository.findByCreatedByAndIsDeletedIsFalse(currentUser)
                 .stream()
                 .map(this::mapToProjectResponse)
@@ -145,7 +145,7 @@ public class ProjectService {
 
     //    Get project by member (or say joined member)
     public List<ProjectResponse> getAllProjectByMember() {
-        User currentUser = securityUtils.getCurrent();
+        User currentUser = securityUtils.getCurrentUser();
         return projectMemberRepository.findAllProjectsByMember(currentUser)
                 .stream()
                 .map(this::mapToProjectResponse)
@@ -155,7 +155,7 @@ public class ProjectService {
 //    Delete project permanently
     @Transactional
     public void permanentlyDeleteProject(Long projectId) {
-        User currentUser = securityUtils.getCurrent();
+        User currentUser = securityUtils.getCurrentUser();
         Project project = projectRepository.findByIdAndIsDeletedIsFalse(projectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found."));
 

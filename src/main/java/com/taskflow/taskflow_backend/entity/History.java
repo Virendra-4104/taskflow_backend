@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "histories",indexes = {@Index(name = "idx_history_entity",columnList = "entity_type, entity_id, created_at")})

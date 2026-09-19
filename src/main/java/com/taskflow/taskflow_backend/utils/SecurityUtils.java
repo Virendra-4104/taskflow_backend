@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SecurityUtils {
-    public User getCurrent(){
+    public User getCurrentUser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(auth == null || !auth.isAuthenticated()){
             throw new UserNotAuthenticatedException("User is not authenticated");

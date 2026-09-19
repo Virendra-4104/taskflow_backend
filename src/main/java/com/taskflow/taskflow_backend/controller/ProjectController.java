@@ -2,7 +2,12 @@ package com.taskflow.taskflow_backend.controller;
 
 import com.taskflow.taskflow_backend.dto.request.project.CreateProjectRequest;
 import com.taskflow.taskflow_backend.dto.request.project.UpdateProjectRequest;
+import com.taskflow.taskflow_backend.dto.request.project_member.AddMemberRequest;
+import com.taskflow.taskflow_backend.dto.request.project_member.RemoveMemberRequest;
 import com.taskflow.taskflow_backend.dto.response.ProjectResponse;
+import com.taskflow.taskflow_backend.dto.response.project_member.MemberResponse;
+import com.taskflow.taskflow_backend.repository.ProjectMemberRepository;
+import com.taskflow.taskflow_backend.service.ProjectMemberService;
 import com.taskflow.taskflow_backend.service.ProjectService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +23,7 @@ import java.util.List;
 public class ProjectController {
 
     private final ProjectService projectService;
+    private final ProjectMemberService projectMemberService;
 
     @PostMapping("/create")
     public ResponseEntity<ProjectResponse> createProject(@Valid @RequestBody CreateProjectRequest request){
@@ -47,5 +53,23 @@ public class ProjectController {
     @DeleteMapping("/delete/{projectId}")
     public ResponseEntity<Void> permanentlyDeleteProject(@PathVariable Long projectId){
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+    
+//  Project member Methods
+    @PostMapping("/add-member")
+    public ResponseEntity<String> addMember(@Valid @RequestBody AddMemberRequest request){
+        projectMemberService.addMember(request);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Member Joined.");
+    }
+
+    @DeleteMapping("/remove-member")
+    public ResponseEntity<String> addMember(@Valid @RequestBody RemoveMemberRequest request){
+        projectMemberService.removeMember(request);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Member removed.");
+    }
+
+    @GetMapping("/get-all-members/{projectId}")
+    public ResponseEntity<List<MemberResponse>> getAllProjectMember(@PathVariable Long projectId){
+        return ResponseEntity.status(HttpStatus.OK).body(projectMemberService.getAllProjectMembers(projectId));
     }
 }
