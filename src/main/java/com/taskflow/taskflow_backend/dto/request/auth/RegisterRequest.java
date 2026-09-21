@@ -1,4 +1,4 @@
-package com.taskflow.taskflow_backend.dto.request.Auth;
+package com.taskflow.taskflow_backend.dto.request.auth;
 
 import com.taskflow.taskflow_backend.enums.Gender;
 import jakarta.validation.constraints.Email;

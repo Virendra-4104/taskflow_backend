@@ -1,7 +1,7 @@
 package com.taskflow.taskflow_backend.service;
 
-import com.taskflow.taskflow_backend.dto.request.Auth.LoginRequest;
-import com.taskflow.taskflow_backend.dto.request.Auth.RegisterRequest;
+import com.taskflow.taskflow_backend.dto.request.auth.LoginRequest;
+import com.taskflow.taskflow_backend.dto.request.auth.RegisterRequest;
 import com.taskflow.taskflow_backend.dto.response.AuthResponse;
 import com.taskflow.taskflow_backend.entity.User;
 import com.taskflow.taskflow_backend.enums.Gender;

@@ -6,7 +6,6 @@ import com.taskflow.taskflow_backend.dto.request.project_member.AddMemberRequest
 import com.taskflow.taskflow_backend.dto.request.project_member.RemoveMemberRequest;
 import com.taskflow.taskflow_backend.dto.response.ProjectResponse;
 import com.taskflow.taskflow_backend.dto.response.project_member.MemberResponse;
-import com.taskflow.taskflow_backend.repository.ProjectMemberRepository;
 import com.taskflow.taskflow_backend.service.ProjectMemberService;
 import com.taskflow.taskflow_backend.service.ProjectService;
 import jakarta.validation.Valid;
