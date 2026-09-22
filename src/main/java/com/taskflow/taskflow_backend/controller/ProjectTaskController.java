@@ -30,12 +30,12 @@ public class ProjectTaskController {
 
     private final ProjectTaskService projectTaskService;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<ProjectTaskResponse> createProjectTask(@PathVariable Long projectId  ,@Valid @RequestBody CreateProjectTaskRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(projectTaskService.createProjectTask(projectId, request));
     }
 
-    @PutMapping("/{taskId}/update")
+    @PutMapping("/{taskId}")
     public ResponseEntity<ProjectTaskResponse> updateProjectTask(@PathVariable Long projectId,
             @PathVariable Long taskId,
             @RequestBody UpdateProjectTaskRequest request) {
@@ -43,7 +43,7 @@ public class ProjectTaskController {
                 .body(projectTaskService.updateProjectTask(projectId, taskId, request));
     }
 
-    @PatchMapping("/{taskId}/update-status")
+    @PatchMapping("/{taskId}/status")
     public ResponseEntity<ProjectTaskResponse> updateProjectTaskStatusByAssignedUser(@PathVariable Long projectId,
             @PathVariable Long taskId,@Valid  @RequestBody UpdateProjectTaskStatusRequest request) {
         return ResponseEntity.status(HttpStatus.OK)
@@ -55,17 +55,17 @@ public class ProjectTaskController {
         return ResponseEntity.status(HttpStatus.OK).body(projectTaskService.getAllProjectTasks(projectId));
     }
 
-    @GetMapping("/{taskId}/get")
+    @GetMapping("/{taskId}")
     public ResponseEntity<ProjectTaskResponse> getProjectTask(@PathVariable Long projectId, @PathVariable Long taskId) {
         return ResponseEntity.status(HttpStatus.OK).body(projectTaskService.getProjectTask(projectId, taskId));
     }
 
-    @GetMapping("/get-by-assigned")
+    @GetMapping("/assigned")
     public ResponseEntity<List<ProjectTaskResponse>> getAllProjectByAssignedUser(@PathVariable  Long projectId){
         return ResponseEntity.status(HttpStatus.OK).body(projectTaskService.getAllProjectByAssignedUser(projectId));
     }
 
-    @DeleteMapping("/{taskId}/delete/")
+    @DeleteMapping("/{taskId}")
     public ResponseEntity<Void> deleteProjectTask(@PathVariable Long projectId, @PathVariable Long taskId){
         projectTaskService.deleteProjectTask(projectId, taskId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

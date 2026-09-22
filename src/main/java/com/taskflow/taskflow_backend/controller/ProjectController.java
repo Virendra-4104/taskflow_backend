@@ -24,17 +24,17 @@ public class ProjectController {
     private final ProjectService projectService;
     private final ProjectMemberService projectMemberService;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<ProjectResponse> createProject(@Valid @RequestBody CreateProjectRequest request){
         return ResponseEntity.status(HttpStatus.CREATED).body(projectService.createProject(request));
     }
 
-    @PostMapping("/update/{projectId}")
+    @PutMapping("/{projectId}")
     public ResponseEntity<ProjectResponse> updateProject(@PathVariable Long projectId, @RequestBody UpdateProjectRequest request){
         return ResponseEntity.status(HttpStatus.OK).body(projectService.updateProject(projectId, request));
     }
 
-    @GetMapping("/get/{projectId}")
+    @GetMapping("/{projectId}")
     public ResponseEntity<ProjectResponse> getProject(@PathVariable Long projectId){
         return ResponseEntity.status(HttpStatus.OK).body(projectService.getProject(projectId));
     }
@@ -49,7 +49,7 @@ public class ProjectController {
         return ResponseEntity.status(HttpStatus.OK).body(projectService.getAllProjectByMember());
     }
 
-    @DeleteMapping("/delete/{projectId}")
+    @DeleteMapping("/{projectId}")
     public ResponseEntity<Void> permanentlyDeleteProject(@PathVariable Long projectId){
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
@@ -67,7 +67,7 @@ public class ProjectController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Member removed.");
     }
 
-    @GetMapping("/get-all-members/{projectId}")
+    @GetMapping("/{projectId}/get-all-members")
     public ResponseEntity<List<MemberResponse>> getAllProjectMember(@PathVariable Long projectId){
         return ResponseEntity.status(HttpStatus.OK).body(projectMemberService.getAllProjectMembers(projectId));
     }

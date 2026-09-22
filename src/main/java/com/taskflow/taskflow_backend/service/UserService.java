@@ -10,7 +10,6 @@ import com.taskflow.taskflow_backend.exception.UserAlreadyExistsException;
 import com.taskflow.taskflow_backend.repository.UserRepository;
 import com.taskflow.taskflow_backend.security.CustomUserDetails;
 import com.taskflow.taskflow_backend.security.JwtService;
-import com.taskflow.taskflow_backend.utils.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,7 +23,6 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    private final SecurityUtils securityUtils;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;

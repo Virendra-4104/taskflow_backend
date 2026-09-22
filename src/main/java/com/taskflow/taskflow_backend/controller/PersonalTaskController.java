@@ -18,12 +18,12 @@ import java.util.List;
 public class PersonalTaskController {
     private final PersonalTaskService personalTaskService;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<PersonalTaskResponse> createPersonalTask(@Valid @RequestBody CreatePersonalTaskRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(personalTaskService.createPersonalTask(request));
     }
 
-    @PostMapping("/update/{taskId}")
+    @PutMapping("{taskId}")
     public ResponseEntity<PersonalTaskResponse> updatePersonalTask(@PathVariable Long taskId, @RequestBody UpdatePersonalTaskRequest request) {
         return ResponseEntity.status(HttpStatus.OK).body(personalTaskService.updatePersonalTask(taskId, request));
     }
@@ -33,12 +33,12 @@ public class PersonalTaskController {
         return ResponseEntity.status(HttpStatus.OK).body(personalTaskService.getAllPersonalTasks());
     }
 
-    @GetMapping("/get/{taskId}")
+    @GetMapping("/{taskId}")
     public ResponseEntity<PersonalTaskResponse> getPersonalTask(@PathVariable Long taskId){
         return ResponseEntity.status(HttpStatus.OK).body(personalTaskService.getPersonalTask(taskId));
     }
 
-    @DeleteMapping("/delete/{taskId}")
+    @DeleteMapping("/{taskId}")
     public ResponseEntity<Void> deletePersonalTask(@PathVariable Long taskId){
         personalTaskService.deletePersonalTask(taskId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
