@@ -96,7 +96,7 @@ public class ProjectService {
         });
 
         Optional.ofNullable(request.description())
-                .filter(descriptio -> !descriptio.isBlank())
+                .filter(description -> !description.isBlank())
                 .ifPresent((newDescription) -> {
                     if (!newDescription.equals(project.getDescription())) {
                         histories.add(History.builder()

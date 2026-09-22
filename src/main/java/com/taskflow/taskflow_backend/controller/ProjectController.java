@@ -58,7 +58,7 @@ public class ProjectController {
     @PostMapping("/add-member")
     public ResponseEntity<String> addMember(@Valid @RequestBody AddMemberRequest request){
         projectMemberService.addMember(request);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Member Joined.");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Member Joined.");
     }
 
     @DeleteMapping("/remove-member")
