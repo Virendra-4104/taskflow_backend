@@ -17,3 +17,7 @@ app:
       expiration: 86400000
     cors:
       allowed-origins: http://localhost:5173
+  swagger:
+    contact:
+      name: taskflow
+      email: taskflow@email.com

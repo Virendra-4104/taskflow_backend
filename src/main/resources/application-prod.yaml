@@ -17,3 +17,7 @@ app:
       expiration: ${jWT_TOKEN_EXPIRATION_TIME}
     cors:
       allowed-origins: ${ALLOWED_ORIGINS}
+  swagger:
+    contact:
+      name: ${SWAGGER_CONTACT_NAME}
+      email: ${SWAGGER_CONTACT_EMAIL}

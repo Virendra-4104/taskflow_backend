@@ -15,27 +15,34 @@ import com.taskflow.taskflow_backend.dto.request.comment.CreateCommentRequest;
 import com.taskflow.taskflow_backend.dto.response.CommentResponse;
 import com.taskflow.taskflow_backend.service.CommentService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-@RestController 
+@RestController
 @RequestMapping("/project/task/{taskId}/comment")
-@RequiredArgsConstructor 
+@RequiredArgsConstructor
+@Tag(name = "Comments", description = "Comment management endpoints")
 public class CommentController {
     private final CommentService commentService;
 
     @PostMapping
-    public ResponseEntity<CommentResponse> createComment(@PathVariable Long taskId, @Valid @RequestBody CreateCommentRequest request){
+    @Operation(summary = "Add a comment to a project task", description = "Adds a new comment to the specified project task.")
+    public ResponseEntity<CommentResponse> createComment(@PathVariable Long taskId,
+            @Valid @RequestBody CreateCommentRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(commentService.createComment(taskId, request));
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<CommentResponse>> getAllComment(@PathVariable Long taskId){
+    @Operation(summary = "Get all task comments", description = "Returns all comments associated with the specified project task.")
+    public ResponseEntity<List<CommentResponse>> getAllComment(@PathVariable Long taskId) {
         return ResponseEntity.status(HttpStatus.OK).body(commentService.getAllComment(taskId));
     }
 
     @GetMapping("/{commentId}")
-    public ResponseEntity<CommentResponse> getComment(@PathVariable Long taskId, @PathVariable Long commentId){
+    @Operation(summary = "Get a task comment", description = "Returns a specific comment from a project task.")
+    public ResponseEntity<CommentResponse> getComment(@PathVariable Long taskId, @PathVariable Long commentId) {
         return ResponseEntity.status(HttpStatus.OK).body(commentService.getComment(taskId, commentId));
     }
 }
